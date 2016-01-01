@@ -6,7 +6,6 @@ angular
   .factory('BuildingObjects', BuildingObjectFactory);
 
 function BuildingObjectFactory() {
-  var currentBuilding = "";
   return [
     {"name": "Standard Residental",
      "shortName": "Res",
