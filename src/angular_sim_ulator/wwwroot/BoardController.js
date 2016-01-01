@@ -6,9 +6,9 @@
 	  .controller('BoardController', BoardController);
 
 
-	BoardController.$inject = ['CurrentBuildingService', 'BuildingObjects'];
+	BoardController.$inject = ['CurrentBuildingService', 'BuildingObjects', 'InitialBoardService'];
 
-	function BoardController(currentBuildingService, buildingObjects) {
+	function BoardController(currentBuildingService, buildingObjects, initialBoardService) {
 		var vm = this;
 		vm.board = [];
 		vm.bulldozerMode = false;
@@ -17,6 +17,8 @@
 		vm.cellValue = cellValue;
 		vm.emptyCellvalue = '';
 		vm.errorMessage = '';
+		vm.jsonifiedBoard = '';
+		vm.showJson = showJson;
 
 		init();
 
@@ -71,7 +73,15 @@
 		        eraseCell(row, col);
 		        vm.errorMessage = "";
 		    }
-        }
+		}
+
+		function showJson() {
+		    if (vm.jsonifiedBoard === '') {
+		        vm.jsonifiedBoard = angular.toJson(vm.board);
+		    } else {
+		        vm.jsonifiedBoard = '';
+		    }
+		}
 
 		function cellClass(row, col) {
 		    var retVal = '';
@@ -97,16 +107,8 @@
 		}
 
 		function init() {
-		    var boardWidth = 40;
-		    var boardHeight = 50;
-
-		    for (var h = 0 ; h < boardHeight ; h++) {
-		        var row = [];
-		        for (var w = 0 ; w < boardWidth ; w++) {
-		            row.push(vm.emptyCellvalue);
-		        }
-		        vm.board.push(row);
-		    }
+		    var initialBoard = initialBoardService.getInitialBoard();
+		    vm.board = initialBoard;
 		}
 
 		function eraseCell(row, col) {
