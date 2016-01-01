@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng:app="app">
+<head>
+  <link rel="stylesheet" href="style.css" />
+
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
+  <script src="app.js"></script>
+  <script src="BoardController.js"></script>
+  <script src="BuildingObjects.js"></script>
+  <script src="CurrentBuildingService.js"></script>
+  <script src="NewBuildingsController.js"></script>
+</head>
+<body>
+    <h1>AngularJS SIMulator</h1>
+    <div id="wrapper">
+        <div id="left" ng-controller="BoardController as boardCtrl">
+            <label><input type="checkbox" ng-model="boardCtrl.bulldozerMode" ng-click="" />Bulldozer Mode</label>
+            &nbsp;<span class="errorMessage">{{boardCtrl.errorMessage}}</span>
+            <table class="board">
+                <tr ng-repeat="row in boardCtrl.board track by $index">
+                    <td ng-repeat="cell in row track by $index" ng-click="boardCtrl.cellClick($parent.$index, $index)"
+                        ng-class="boardCtrl.cellClass($parent.$index, $index)">
+                        {{boardCtrl.cellValue($parent.$index, $index)}}
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="right" ng-controller="NewBuildingsController as nb">
+            <label ng-repeat="building in nb.allBuildings" class="block">
+                <input type="radio" ng-model="nb.currentValue" ng-click="nb.modify()" ng-value="nb.allBuildings[$index]" />&nbsp;{{building.shortName}}
+            </label>
+            <br />
+        </div>
+    </div>
+</body>
+</html>

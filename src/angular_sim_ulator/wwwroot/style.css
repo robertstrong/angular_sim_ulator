@@ -1,0 +1,56 @@
+
+div#wrapper{
+    margin:0;
+}
+
+div#left{
+    float:left;
+    overflow:hidden;
+}
+
+div#right{
+    padding:0 0 0 10px;
+    text-align:left;
+    width:25%;
+    overflow:hidden;
+}
+
+h1 {
+  font-size: 1.3em;
+  color: #080404;
+  font-weight: bold;    
+}
+
+.block {
+  display: block;
+}
+
+.board {
+  border-spacing: 0;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.board td {
+  width: 18px;
+  height: 18px;
+  text-align: center;
+  vertical-align: middle;
+  border: solid 1px #0f0f0f;
+}
+
+.errorMessage {
+  color: red;
+}
+
+.cell-residential {
+  background-color: #00ff00;
+}
+
+.cell-road {
+  background-color: #000000;
+}
+
+.cell-factory {
+  background-color: #ff0000;
+}
