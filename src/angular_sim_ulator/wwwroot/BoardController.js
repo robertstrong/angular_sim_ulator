@@ -32,8 +32,8 @@
 		            var activeCell = vm.board[row][col];
 
                     // Link the child cells
-		            for (var i = 0; i < activeCell.numCellsX; i++) {
-		                for (var j = 0; j < activeCell.numCellsY; j++) {
+		            for (var i = 0; i < activeCell.numCellsY; i++) {
+		                for (var j = 0; j < activeCell.numCellsX; j++) {
 		                    if (0 !== i || 0 !== j) {
 		                        var newRow = parseInt(row) + parseInt(i);
 		                        var newCol = parseInt(col) + parseInt(j);
@@ -116,8 +116,8 @@
 		}
 
 		function isCollision(row, col, sizeX, sizeY) {
-			for (var i = 0; i < sizeX; i++) {
-				for (var j = 0; j < sizeY; j++) {
+			for (var i = 0; i < sizeY; i++) {
+				for (var j = 0; j < sizeX; j++) {
 					var curValue = vm.board[parseInt(row) + parseInt(i)][parseInt(col) + parseInt(j)];
 					if (curValue !== vm.emptyCellvalue) {
 						return true;
