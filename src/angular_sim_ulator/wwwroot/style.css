@@ -52,5 +52,13 @@ h1 {
 }
 
 .cell-factory {
+  background-color: #8e0909;
+}
+
+.cell-fire {
   background-color: #ff0000;
+}
+
+.cell-park {
+  background-color: #205820;
 }
